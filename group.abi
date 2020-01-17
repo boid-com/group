@@ -1,0 +1,754 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "action",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "name",
+                    "type": "name"
+                },
+                {
+                    "name": "authorization",
+                    "type": "permission_level[]"
+                },
+                {
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "addchildac",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "parent",
+                    "type": "name"
+                },
+                {
+                    "name": "module_name",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "approve",
+            "base": "",
+            "fields": [
+                {
+                    "name": "approver",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "balances",
+            "base": "",
+            "fields": [
+                {
+                    "name": "balance",
+                    "type": "extended_asset"
+                }
+            ]
+        },
+        {
+            "name": "cancel",
+            "base": "",
+            "fields": [
+                {
+                    "name": "canceler",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "childaccounts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account_name",
+                    "type": "name"
+                },
+                {
+                    "name": "parent",
+                    "type": "name"
+                },
+                {
+                    "name": "module_name",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "coreconf",
+            "base": "",
+            "fields": [
+                {
+                    "name": "conf",
+                    "type": "groupconf"
+                }
+            ]
+        },
+        {
+            "name": "corestate",
+            "base": "",
+            "fields": [
+                {
+                    "name": "state",
+                    "type": "groupstate"
+                }
+            ]
+        },
+        {
+            "name": "custodians",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "authority",
+                    "type": "name"
+                },
+                {
+                    "name": "weight",
+                    "type": "uint8"
+                },
+                {
+                    "name": "joined",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "last_active",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "exec",
+            "base": "",
+            "fields": [
+                {
+                    "name": "executer",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "groupconf",
+            "base": "",
+            "fields": [
+                {
+                    "name": "max_custodians",
+                    "type": "uint8"
+                },
+                {
+                    "name": "inactivate_cust_after_sec",
+                    "type": "uint32"
+                },
+                {
+                    "name": "exec_on_threshold_zero",
+                    "type": "bool"
+                },
+                {
+                    "name": "proposal_archive_size",
+                    "type": "uint8"
+                },
+                {
+                    "name": "member_registration",
+                    "type": "bool"
+                },
+                {
+                    "name": "withdrawals",
+                    "type": "bool"
+                },
+                {
+                    "name": "internal_transfers",
+                    "type": "bool"
+                },
+                {
+                    "name": "deposits",
+                    "type": "bool"
+                },
+                {
+                    "name": "maintainer_account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "groupstate",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cust_count",
+                    "type": "uint8"
+                },
+                {
+                    "name": "member_count",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "imalive",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "internalxfr",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "extended_asset"
+                },
+                {
+                    "name": "msg",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "invitecust",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "manthreshlin",
+            "base": "",
+            "fields": [
+                {
+                    "name": "contract",
+                    "type": "name"
+                },
+                {
+                    "name": "action_name",
+                    "type": "name"
+                },
+                {
+                    "name": "threshold_name",
+                    "type": "name"
+                },
+                {
+                    "name": "remove",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "manthreshold",
+            "base": "",
+            "fields": [
+                {
+                    "name": "threshold_name",
+                    "type": "name"
+                },
+                {
+                    "name": "threshold",
+                    "type": "int8"
+                },
+                {
+                    "name": "remove",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "members",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "agreement_date",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "r1",
+                    "type": "uint64"
+                },
+                {
+                    "name": "r2",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "permission_level",
+            "base": "",
+            "fields": [
+                {
+                    "name": "actor",
+                    "type": "name"
+                },
+                {
+                    "name": "permission",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "proposals",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "actions",
+                    "type": "action[]"
+                },
+                {
+                    "name": "submitted",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "expiration",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "approvals",
+                    "type": "name[]"
+                },
+                {
+                    "name": "required_threshold",
+                    "type": "name"
+                },
+                {
+                    "name": "last_actor",
+                    "type": "name"
+                },
+                {
+                    "name": "trx_id",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "propose",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "name": "actions",
+                    "type": "action[]"
+                },
+                {
+                    "name": "expiration",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "regmember",
+            "base": "",
+            "fields": [
+                {
+                    "name": "actor",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "remchildac",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "removecust",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "setcusts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "accounts",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "spawnchildac",
+            "base": "",
+            "fields": [
+                {
+                    "name": "new_account",
+                    "type": "name"
+                },
+                {
+                    "name": "ram_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "net_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "cpu_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "parent",
+                    "type": "name"
+                },
+                {
+                    "name": "module_name",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "threshlinks",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "contract",
+                    "type": "name"
+                },
+                {
+                    "name": "action_name",
+                    "type": "name"
+                },
+                {
+                    "name": "threshold_name",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "thresholds",
+            "base": "",
+            "fields": [
+                {
+                    "name": "threshold_name",
+                    "type": "name"
+                },
+                {
+                    "name": "threshold",
+                    "type": "int8"
+                }
+            ]
+        },
+        {
+            "name": "trunchistory",
+            "base": "",
+            "fields": [
+                {
+                    "name": "archive_type",
+                    "type": "name"
+                },
+                {
+                    "name": "batch_size",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "unapprove",
+            "base": "",
+            "fields": [
+                {
+                    "name": "unapprover",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "unregmember",
+            "base": "",
+            "fields": [
+                {
+                    "name": "actor",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "updateconf",
+            "base": "",
+            "fields": [
+                {
+                    "name": "new_conf",
+                    "type": "groupconf"
+                },
+                {
+                    "name": "remove",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "widthdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "extended_asset"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "addchildac",
+            "type": "addchildac",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "approve",
+            "type": "approve",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "cancel",
+            "type": "cancel",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "exec",
+            "type": "exec",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "imalive",
+            "type": "imalive",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "internalxfr",
+            "type": "internalxfr",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "invitecust",
+            "type": "invitecust",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "manthreshlin",
+            "type": "manthreshlin",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "manthreshold",
+            "type": "manthreshold",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "propose",
+            "type": "propose",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "regmember",
+            "type": "regmember",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "remchildac",
+            "type": "remchildac",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "removecust",
+            "type": "removecust",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setcusts",
+            "type": "setcusts",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "spawnchildac",
+            "type": "spawnchildac",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "trunchistory",
+            "type": "trunchistory",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unapprove",
+            "type": "unapprove",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unregmember",
+            "type": "unregmember",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "updateconf",
+            "type": "updateconf",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "widthdraw",
+            "type": "widthdraw",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "balances",
+            "type": "balances",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "childaccount",
+            "type": "childaccounts",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "coreconf",
+            "type": "coreconf",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "corestate",
+            "type": "corestate",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "custodians",
+            "type": "custodians",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "members",
+            "type": "members",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "proposals",
+            "type": "proposals",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "threshlinks",
+            "type": "threshlinks",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "thresholds",
+            "type": "thresholds",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
