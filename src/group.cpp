@@ -168,6 +168,8 @@ ACTION group::exec(name executer, uint64_t id) {
 ACTION group::invitecust(name account){
   require_auth(get_self() );
   check(account != get_self(), "Self can't be a custodian.");
+  
+  auto conf = get_group_conf();
 
   check(is_account_voice_wrapper(account), "Account does not exist or doesn't meet requirements.");
 
