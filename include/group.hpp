@@ -59,7 +59,7 @@ CONTRACT group : public contract {
       bool withdrawals = false;
       bool internal_transfers = false;
       bool deposits = false;
-      name maintainer_account = name(0);
+      name maintainer_account = name("eosgroups222");
       //user_agreement user_agreement;
     };
 
