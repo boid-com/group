@@ -65,7 +65,7 @@ CONTRACT group : public contract {
 
     ACTION invitecust(name account);
     ACTION removecust(name account);
-    ACTION setcusts(vector<name> accounts);
+    ACTION isetcusts(vector<name> accounts);//"elections" module interface action
 
     ACTION propose(name proposer, string title, string description, vector<action> actions, time_point_sec expiration);
     ACTION approve(name approver, uint64_t id);
@@ -242,10 +242,13 @@ CONTRACT group : public contract {
     void assert_invalid_authorization( vector<permission_level> auths);
     void archive_proposal(const name& archive_type, proposals_table& idx, proposals_table::const_iterator& prop_itr);
 
+    bool has_module(const name& module_name);
+
     //members
     bool is_member(const name& accountname);
     bool member_has_balance(const name& accountname);
     void update_member_count(int delta);
+    void update_custodian_count(int delta);
 
     //messaging to parent contract
     void add_system_msg(const name& group_name_self, const name& receiver, const string& msg, const uint8_t type);

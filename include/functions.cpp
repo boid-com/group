@@ -43,6 +43,14 @@ void group::update_member_count(int delta){
   _corestate.set(state, get_self());
 }
 
+void group::update_custodian_count(int delta){
+
+  corestate_table _corestate(get_self(), get_self().value);
+  auto state = _corestate.get_or_create(get_self(), corestate());
+  state.state.cust_count = state.state.cust_count + delta;
+  _corestate.set(state, get_self());
+}
+
 bool group::is_account_voice_wrapper(const name& account){
   //if config voice only do stuff
   return is_account(account);
@@ -407,6 +415,19 @@ void group::archive_proposal(const name& archive_type, proposals_table& idx, pro
   }
   idx.erase(prop_itr);
 
+}
+
+bool group::has_module(const name& module_name){
+
+  childaccounts_table _childaccounts(get_self(), get_self().value);
+  auto by_module_name = _childaccounts.get_index<"bymodulename"_n>();
+  auto itr = by_module_name.find(module_name.value); //use get here
+  if(itr == by_module_name.end()){
+    return false;
+  }
+  else{
+    return true;
+  }
 }
 
 

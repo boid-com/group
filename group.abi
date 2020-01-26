@@ -258,6 +258,16 @@
             ]
         },
         {
+            "name": "isetcusts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "accounts",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
             "name": "manthreshlin",
             "base": "",
             "fields": [
@@ -440,16 +450,6 @@
             ]
         },
         {
-            "name": "setcusts",
-            "base": "",
-            "fields": [
-                {
-                    "name": "accounts",
-                    "type": "name[]"
-                }
-            ]
-        },
-        {
             "name": "spawnchildac",
             "base": "",
             "fields": [
@@ -619,6 +619,11 @@
             "ricardian_contract": ""
         },
         {
+            "name": "isetcusts",
+            "type": "isetcusts",
+            "ricardian_contract": ""
+        },
+        {
             "name": "manthreshlin",
             "type": "manthreshlin",
             "ricardian_contract": ""
@@ -646,11 +651,6 @@
         {
             "name": "removecust",
             "type": "removecust",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "setcusts",
-            "type": "setcusts",
             "ricardian_contract": ""
         },
         {

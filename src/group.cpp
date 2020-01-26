@@ -61,6 +61,7 @@ ACTION group::propose(name proposer, string title, string description, vector<ac
     n.id = _proposals.available_primary_key();
     n.proposer = proposer;
     n.actions = actions;
+    n.approvals = {proposer};
     n.expiration = expiration;
     n.submitted = now;
     n.description = description;
@@ -170,6 +171,7 @@ ACTION group::invitecust(name account){
   check(account != get_self(), "Self can't be a custodian.");
   
   auto conf = get_group_conf();
+  
 
   check(is_account_voice_wrapper(account), "Account does not exist or doesn't meet requirements.");
 
@@ -181,7 +183,7 @@ ACTION group::invitecust(name account){
   _custodians.emplace( get_self(), [&]( auto& n){
       n.account = account;
   });
-  //update_active();
+  update_custodian_count(1);
 }
 
 ACTION group::removecust(name account){
@@ -193,7 +195,7 @@ ACTION group::removecust(name account){
   check(cust_itr != _custodians.end(), "Account is not a custodian.");
     
   _custodians.erase(cust_itr);
-  
+  update_custodian_count(-1);
   if(_custodians.begin() != _custodians.end() ){
     //the erased entry was not the last one.
     update_active();
@@ -217,9 +219,16 @@ ACTION group::imalive(name account){
   }
 }
 
-ACTION group::setcusts(vector<name> accounts){
+ACTION group::isetcusts(vector<name> accounts){
   
-  require_auth(get_self() );//this needs to be the voting contract
+  //require_auth(get_self() );
+  childaccounts_table _childaccounts(get_self(), get_self().value);
+  auto by_module_name = _childaccounts.get_index<"bymodulename"_n>();
+  auto itr = by_module_name.find(name("elections").value);
+  check(itr != by_module_name.end(), "Group doesn't have module_name elections");
+
+  require_auth(itr->account_name); //elections_contract
+
   int count_new = accounts.size();
   auto conf = get_group_conf();
   //accounts size must be <= numberofcustodians.
