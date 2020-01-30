@@ -70,6 +70,18 @@ ACTION group::propose(name proposer, string title, string description, vector<ac
     n.trx_id = get_trx_id();
     n.required_threshold = max_required_threshold.threshold_name;
   });
+
+  if(true){
+  //messagebus(name sender_group, name event, string message)
+    string msg  = "New proposal by "+proposer.to_string();
+    action(
+        permission_level{ get_self(), "owner"_n },
+        name("eosgroups222"),
+        "messagebus"_n,
+        std::make_tuple(get_self(), name("propose"), msg )
+    ).send();
+  }
+
 }
 //////////////
 ACTION group::approve(name approver, uint64_t id) {
