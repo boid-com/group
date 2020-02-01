@@ -183,7 +183,7 @@ ACTION group::invitecust(name account){
   check(account != get_self(), "Self can't be a custodian.");
   
   auto conf = get_group_conf();
-  
+
 
   check(is_account_voice_wrapper(account), "Account does not exist or doesn't meet requirements.");
 
@@ -243,14 +243,50 @@ ACTION group::isetcusts(vector<name> accounts){
 
   int count_new = accounts.size();
   auto conf = get_group_conf();
-  //accounts size must be <= numberofcustodians.
-  //
+  check(count_new <= conf.max_custodians, "Too many new custodians");
   check(count_new != 0, "Empty custodian list not allowed");
 
-  custodians_table _custodians(get_self(), get_self().value);
-  //intersect
-  sort(accounts.begin(), accounts.end() );
   vector<custodians> new_custs;
+  custodians_table _custodians(get_self(), get_self().value);
+  
+  time_point_sec now = time_point_sec(current_time_point().sec_since_epoch());
+
+  for(name cand : accounts){
+    //check if cand is already a custodian
+    auto itr_existing = _custodians.find(cand.value);
+    if(itr_existing != _custodians.end()){
+      new_custs.push_back(*itr_existing);
+    }
+    else{
+      custodians newelected{};
+      newelected.account = cand;
+      //newelected.weight = 1;
+      //newelected.authority = name("active");
+      //newelected.joined = time_point_sec(current_time_point().sec_since_epoch());
+      newelected.last_active = now;
+      new_custs.push_back(newelected);
+    }
+  }
+  //empty current custodian table
+  auto clean_itr = _custodians.begin();
+  while(clean_itr != _custodians.end() ) {
+    clean_itr = _custodians.erase(clean_itr);
+  }
+
+  //repopulate with new elected
+  for(custodians nc : new_custs){
+    _custodians.emplace( get_self(), [&]( auto& n){
+        n = nc;
+    });
+  }
+
+  update_active();
+
+  corestate_table _corestate(get_self(), get_self().value);
+  auto state = _corestate.get_or_create(get_self(), corestate());
+  state.state.cust_count = count_new;
+  _corestate.set(state, get_self());
+
 }
 
 ACTION group::widthdraw(name account, extended_asset amount) {
