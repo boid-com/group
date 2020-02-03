@@ -1,15 +1,11 @@
 
 #include <eosio/eosio.hpp>
 #include <eosio/asset.hpp>
-#include <eosio/system.hpp>
+//#include <eosio/system.hpp>
 #include <eosio/permission.hpp>
 #include <eosio/singleton.hpp>
 #include <system_structs.hpp>
-
-#include <eosgroups.hpp>
-
-//#include <eosio/print.hpp>
-
+#include <external_structs.hpp>
 #include <math.h>
 
 using namespace std;
